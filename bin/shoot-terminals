@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # The three-terminal portrait of this theme, staged and shot on a workspace:
 # fastfetch on the left (the theme's own wallpaper as its sixel logo), the
-# omarchy palette preview and btop stacked on the right.
+# omarchy palette preview and btop stacked on the right, with the Super+Space
+# menu open over the finished scene.
 #
 #   bin/shoot-terminals            -> screenshots/terminals.png + preview.png
 #   bin/shoot-terminals --keep     leave the staged workspace up to look at
@@ -51,7 +52,7 @@ while (($#)); do
 done
 
 need() { command -v "$1" >/dev/null || { echo "need $1" >&2; exit 1; }; }
-for c in hyprctl grim magick jq foot btop fastfetch omarchy-dev-theme-preview; do need "$c"; done
+for c in hyprctl grim magick jq foot btop fastfetch omarchy-dev-theme-preview wtype; do need "$c"; done
 
 close_shot_windows() {
   while IFS= read -r a; do
@@ -74,6 +75,9 @@ read -r CUR_X CUR_Y < <(hyprctl cursorpos 2>/dev/null | tr -d ',')
 CUR_X="${CUR_X:-0}" CUR_Y="${CUR_Y:-0}"
 
 cleanup() {
+  # Close the menu before returning to the user's workspace. Escape is safe if
+  # the menu failed to open; it only reaches one of our staged terminals.
+  wtype -k escape >/dev/null 2>&1 || true
   [[ -z $KEEP ]] && close_shot_windows
   hyprctl dispatch "hl.dsp.focus({ workspace = $HOME_WS })" >/dev/null 2>&1
   hyprctl dispatch "hl.dsp.cursor.move({ x = $CUR_X, y = $CUR_Y })" >/dev/null 2>&1
@@ -154,9 +158,16 @@ bt="$(addr_of bf-shot-btop)"
 [[ -n $bt ]] && hyprctl dispatch "hl.dsp.focus({ window = \"address:$bt\" })" >/dev/null 2>&1
 sleep 0.4
 
+# Put the real Omarchy menu in the foreground after the target monitor and
+# workspace own focus. It is a layer surface, so opening it earlier can attach
+# it to whichever monitor was active before staging.
+wtype -M logo -k space -m logo
+sleep 1.2
+
 echo "--- staging state (evidence, not vibes)"
 hyprctl monitors -j | jq -r '.[] | "  \(.name) pos=\(.x),\(.y) logical=\((.width / .scale) | floor)x\((.height / .scale) | floor) focused=\(.focused) ws=\(.activeWorkspace.id)"'
 hyprctl clients -j | jq -r '.[] | select(.title | startswith("bf-shot-")) | "  \(.title) at=\(.at) size=\(.size) ws=\(.workspace.id) mon=\(.monitor)"'
+hyprctl layers -j | jq -r --arg m "$SHOT_MON" '.[$m].levels | to_entries[] | .value[] | select(.namespace == "omarchy-menu") | "  menu namespace=\(.namespace) monitor='"$SHOT_MON"'"'
 echo "  target: fetch=($LX,$LY ${LW}x$AH) palette=($RX,$LY ${RW}x$PH) btop=($RX,$BY ${RW}x$BH)"
 
 # Shot hygiene: pointer off the capture, latched error banner closed, the
