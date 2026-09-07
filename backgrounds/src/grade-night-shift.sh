@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Regrades the theme's one sourced wallpaper. night-shift-src.png (pixel art,
-# 1254x1254, warm cream + slate blue as sourced) is flattened to grayscale and
-# pushed through a five-stop palette ramp — ground shades through material into
+# Regrades one of the theme's GPT source renders. night-shift-src.png (pixel
+# art, 1254x1254, warm cream + slate blue as rendered) is flattened to
+# grayscale and pushed through a five-stop palette ramp — ground through material into
 # cyan mids, with the hottest values (the doorway, the rim light) crossing into
 # magenta — then centred on a 4K canvas matched to the art's own border black.
 # Dep: imagemagick (magick). The PNG is committed; rerun only to change the grade.

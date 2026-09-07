@@ -54,9 +54,11 @@ wordmark is drawn by [`backgrounds/src/render.sh`](backgrounds/src/render.sh)
 (bash emits SVG and librsvg rasterises it). Four source renders are brought
 onto the palette — one re-lit from grayscale, three conformed by
 [`backgrounds/src/conform-sourced.sh`](backgrounds/src/conform-sourced.sh)
-(fill-crop, chroma trim, floor crushed to the void).
+(fill-crop, chroma trim, floor crushed to the void). All four were generated
+for this theme with GPT and processed locally; their retained source renders
+live in [`backgrounds/src/`](backgrounds/src/).
 
-- **Night shift** — sourced pixel art
+- **Night shift** — GPT-rendered pixel art
   ([`backgrounds/src/night-shift-src.png`](backgrounds/src/night-shift-src.png)),
   flattened to grayscale and regraded through a palette ramp by
   [`backgrounds/src/grade-night-shift.sh`](backgrounds/src/grade-night-shift.sh):
