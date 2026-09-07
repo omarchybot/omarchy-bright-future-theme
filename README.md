@@ -59,7 +59,8 @@ for this theme with GPT and processed locally; their retained source renders
 live in [`backgrounds/src/`](backgrounds/src/).
 
 - **Night shift** — GPT-rendered pixel art
-  ([`backgrounds/src/night-shift-src.png`](backgrounds/src/night-shift-src.png)),
+  ([generation conversation](https://chatgpt.com/share/6a9e7cfa-38b4-83e8-91dc-2bb4e7c9d8b3),
+  [`backgrounds/src/night-shift-src.png`](backgrounds/src/night-shift-src.png)),
   flattened to grayscale and regraded through a palette ramp by
   [`backgrounds/src/grade-night-shift.sh`](backgrounds/src/grade-night-shift.sh):
   indigo mass, cyan reticle, magenta doorway.
