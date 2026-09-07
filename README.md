@@ -4,7 +4,11 @@ An Omarchy theme. Dark-space duotone: a near-black indigo ground, one hot
 magenta signal, one electric cyan depth. About 90% of every surface stays
 dark — the two accents behave like coloured light sources, not paint.
 
-![Bright horizon](backgrounds/1-bright-horizon.png)
+![Bright Future, applied](screenshots/terminals.png)
+
+The capture is real and reproducible: `bin/shoot-terminals` stages fastfetch,
+the omarchy palette preview and btop on a spare workspace, shoots the monitor,
+and derives `preview.png` from the same frame.
 
 ## Install
 
@@ -47,6 +51,8 @@ librsvg rasterises, ImageMagick derives the preview/unlock stills). No sourced
 art. *Bright horizon* is the dawn line and grid; *deep field* is a starfield
 with a two-hue drift for a quieter second cycle. Rendered PNGs are committed —
 rerun the script only to change the art (needs librsvg and ImageMagick).
+
+![Bright horizon](backgrounds/1-bright-horizon.png)
 
 ![Deep field](backgrounds/2-deep-field.png)
 
