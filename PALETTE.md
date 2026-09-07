@@ -6,8 +6,13 @@ used equally and are never blended everywhere. They have jobs.
 
 ## Roles
 
-**GROUND** — near-black, very low chroma, may carry a faint tint of one accent.
-Target 2–8% perceptual lightness. It should visually disappear.
+**GROUND** — the dark field everything sits in: low lightness, but with enough
+chroma to read as a colour. Target 2–10% perceptual lightness, and spend the
+top of that band on the everyday surface — below ~L\*6 the eye stops reading
+hue and the ground collapses into an absence. It should recede like a medium
+(glass, water, atmosphere), never disappear like a void. The true void shades
+live *underneath* it, for gaps and wallpaper, so lit surfaces float above the
+scene.
 
 **MATERIAL** — the dark, desaturated body colour large shapes are made of: a
 shadow-side relative of accent B, never a neutral mid-grey. Selections, muted
@@ -46,6 +51,17 @@ palette.
 Glow uses the hue of the emitting element. Bright core, saturated halo, rapid
 falloff. No broad foggy bloom. White appears only in cores, sparingly.
 
+## Temperature
+
+Depth is thermal. The ground is the cool pole, the signal light is the warm
+pole, and the scale between them reads as distance: warm advances, cool
+recedes. So **the brighter a glyph, the warmer its white** — body text leans
+toward the signal hue, the brightest text is nearly the signal-tinted core
+white, and dim text cools back into the medium. Never one white for
+everything; an even, hueless white flattens the field it sits on. Value
+strata follow the same logic: keep the everyday surfaces 4–7 L\* apart in the
+range where the eye can see the steps, not compressed against black.
+
 ## Cutting a sibling palette
 
 Specify three hues and re-derive everything else:
@@ -63,13 +79,17 @@ primary + magenta secondary — which is this theme.
 
 | Role | Value |
 |---|---|
-| Ground | `#0b0c19` (shades `#04040b`, `#070811`, `#151735`) |
+| Ground | `#131637` glass, over void shades `#0b0c19`, `#04040b`; raised `#1e2350` |
 | Material | `#221f4e` raise, `#414780` line, `rgba(221f4eaa)` inactive border |
+| Text warmth | dim `#6b74a8` (cool) → body `#d9cfe8` → bright `#fbf0fb` (warm) |
 | Signal A | `#ff4fd1`, bright `#ff8ae2` (hue ≈ 316°) |
 | Depth B | `#45e5ff`, family `#38d2f5` / `#7deeff` (hue ≈ 192°) |
 | Hue separation | ≈ 124° — inside the 80–170° window |
 | Where they meet | `hyprland_active_border = "#ff4fd1 #45e5ff 45deg"` |
 
 The ANSI colours keep their semantic hues (red warns, green passes) but are
-tuned to the palette's temperature: pink-leaning red `#ff5c7a`, mint green
-`#43e8ac`, indigo blue `#6f8dff`, warm sand yellow `#ffce73`.
+tuned to the palette's temperature and held a step below the accents in
+saturation: pink-leaning red `#ef637e`, mint green `#55cfa2`, indigo blue
+`#738ee8`, warm sand yellow `#e8c77a`. Only the magenta signal and the cyan
+depth may look electrically impossible; everything else is supporting cast —
+collectively-saturated ANSI rows are what tip a duotone into RGB soup.

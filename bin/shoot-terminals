@@ -137,7 +137,7 @@ BTOP_FONT="JetBrainsMono Nerd Font:size=10.5"
 # Every pane draws only after a delay, so it renders once, at its final
 # placed geometry — fastfetch's sixel logo does not survive a reflow.
 setsid foot -o main.locked-title=yes --font "$FETCH_FONT" --title bf-shot-fetch \
-  bash -c "sleep 1.8; clear; printf '\n'; fastfetch --logo '$root/backgrounds/1-bright-horizon.png' --logo-type sixel --logo-width 36 --logo-padding-top 1; printf '\033[?25l'; exec sleep 900" >/dev/null 2>&1 &
+  bash -c "sleep 1.8; clear; printf '\n'; fastfetch --logo '$root/backgrounds/5-low-orbit.png' --logo-type sixel --logo-width 36 --logo-padding-top 1; printf '\033[?25l'; exec sleep 900" >/dev/null 2>&1 &
 setsid foot -o main.locked-title=yes --font "$PANE_FONT" --title bf-shot-palette \
   bash -c 'sleep 1.8; clear; printf "\n  \033[95m❯\033[0m omarchy dev theme-preview\n\n"; omarchy-dev-theme-preview --no-osc | awk "/^ANSI palette strips/ { f = 1 } f"; printf "\033[?25l"; exec sleep 900' >/dev/null 2>&1 &
 setsid foot -o main.locked-title=yes --font "$BTOP_FONT" --title bf-shot-btop \
