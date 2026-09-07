@@ -1,0 +1,42 @@
+# Bright Future — dark-space dual-accent duotone.
+# One hot magenta signal (#ff4fd1), one electric cyan depth (#45e5ff),
+# a near-black indigo ground. Roles and ratios: PALETTE.md.
+mode = "dark"
+
+accent    = "#ff4fd1"   # Signal (accent A) — the active colour
+selection = "#221f4e"   # Material raise
+muted     = "#414780"   # Material line / muted mid
+
+background         = "#0b0c19"   # Ground — near-black indigo
+dark_background    = "#070811"
+darker_background  = "#04040b"
+lighter_background = "#151735"
+
+foreground        = "#c8d0f4"
+dark_foreground   = "#6b74a8"
+light_foreground  = "#dde3ff"
+bright_foreground = "#f2f4ff"
+
+red     = "#ff5c7a"
+yellow  = "#ffce73"
+orange  = "#ff9e64"
+green   = "#43e8ac"
+cyan    = "#38d2f5"   # Depth (accent B) family
+blue    = "#6f8dff"
+magenta = "#ff4fd1"   # = accent A
+brown   = "#7d4b66"
+
+bright_red     = "#ff8aa4"
+bright_yellow  = "#ffe2a8"
+bright_green   = "#7df7cd"
+bright_cyan    = "#7deeff"
+bright_blue    = "#9bb0ff"
+bright_magenta = "#ff8ae2"
+
+# Dual-accent wiring picked up by Omarchy's templates.
+# Active window borders run signal -> depth, the one place both accents meet.
+hyprland_active_border   = "#ff4fd1 #45e5ff 45deg"
+hyprland_inactive_border = "rgba(221f4eaa)"
+
+selection_foreground = "#f2f4ff"
+selection_background = "#2a2d63"
